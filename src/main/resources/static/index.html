@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio Arcane</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f4f6f9;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 30px 0;
+      color: #2c3e50;
+    }
+
+    .form-card {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .output-section {
+      background-color: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Ejercicio de entidades - Arcane</h1>
+
+  <div class="row">
+    <!-- Crear Personaje -->
+    <div class="col-md-6">
+      <div class="form-card">
+        <h2>Crear Personaje</h2>
+        <form id="form-personaje">
+          <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="p-nombre" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Origen</label>
+            <input type="text" class="form-control" id="p-origen" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Rol</label>
+            <input type="text" class="form-control" id="p-rol" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Alineación</label>
+            <input type="text" class="form-control" id="p-alineacion" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Crear Personaje</button>
+        </form>
+      </div>
+      <div class="output-section" id="out-personajes"></div>
+    </div>
+
+    <!-- Crear Organización -->
+    <div class="col-md-6">
+      <div class="form-card">
+        <h2>Crear Organización</h2>
+        <form id="form-organizacion">
+          <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="o-nombre" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Ciudad Base</label>
+            <input type="text" class="form-control" id="o-ciudad" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Tipo</label>
+            <input type="text" class="form-control" id="o-tipo" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Crear Organización</button>
+        </form>
+      </div>
+      <div class="output-section" id="out-organizaciones"></div>
+    </div>
+
+    <!-- Crear Tecnología -->
+    <div class="col-md-6">
+      <div class="form-card">
+        <h2>Crear Tecnología</h2>
+        <form id="form-tecnologia">
+          <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="t-nombre" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Tipo</label>
+            <input type="text" class="form-control" id="t-tipo" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Descripción</label>
+            <input type="text" class="form-control" id="t-desc" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Crear Tecnología</button>
+        </form>
+      </div>
+      <div class="output-section" id="out-tecnologias"></div>
+    </div>
+
+    <!-- Crear Afiliación -->
+    <div class="col-md-6">
+      <div class="form-card">
+        <h2>Crear Afiliación</h2>
+        <form id="form-afiliacion">
+          <div class="mb-3">
+            <label class="form-label">ID Personaje</label>
+            <input type="number" class="form-control" id="a-id-personaje" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">ID Organización</label>
+            <input type="number" class="form-control" id="a-id-org" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Rol</label>
+            <input type="text" class="form-control" id="a-rol" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Fecha Ingreso (YYYY-MM-DD)</label>
+            <input type="text" class="form-control" id="a-fecha" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Crear Afiliación</button>
+        </form>
+      </div>
+      <div class="output-section" id="out-afiliaciones"></div>
+    </div>
+
+    <!-- Crear Relación -->
+    <div class="col-md-6">
+      <div class="form-card">
+        <h2>Crear Relación</h2>
+        <form id="form-relacion">
+          <div class="mb-3">
+            <label class="form-label">ID Personaje A</label>
+            <input type="number" class="form-control" id="r-id-a" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">ID Personaje B</label>
+            <input type="number" class="form-control" id="r-id-b" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Tipo de Relación</label>
+            <input type="text" class="form-control" id="r-tipo" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Crear Relación</button>
+        </form>
+      </div>
+      <div class="output-section" id="out-relaciones"></div>
+    </div>
+
+    <!-- Crear Uso -->
+    <div class="col-md-6">
+      <div class="form-card">
+        <h2>Crear Uso de Tecnología</h2>
+        <form id="form-uso">
+          <div class="mb-3">
+            <label class="form-label">ID Personaje</label>
+            <input type="number" class="form-control" id="u-id-personaje" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">ID Tecnología</label>
+            <input type="number" class="form-control" id="u-id-tec" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Crear Uso</button>
+        </form>
+      </div>
+      <div class="output-section" id="out-usos"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const mostrarRespuesta = (elementId, endpoint) => {
+    fetch(endpoint)
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById(elementId);
+        container.innerHTML = '<ul>' + data.map(e => `<li><pre>${formatearObjeto(e)}</pre></li>`).join('') + '</ul>';
+      });
+  };
+
+
+    const postForm = (formId, url, dataBuilder, outputId) => {
+      document.getElementById(formId).addEventListener("submit", function(e) {
+        e.preventDefault();
+        const data = dataBuilder();
+        fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(data => {
+          alert("Creado exitosamente");
+          console.log("Respuesta:", data);
+          mostrarRespuesta(outputId, url);
+        });
+      });
+    };
+
+    postForm("form-personaje", "/personajes", () => ({
+      nombre: document.getElementById("p-nombre").value,
+      origen: document.getElementById("p-origen").value,
+      rol: document.getElementById("p-rol").value,
+      alineacion: document.getElementById("p-alineacion").value
+    }), "out-personajes");
+
+    postForm("form-organizacion", "/organizaciones", () => ({
+      nombre: document.getElementById("o-nombre").value,
+      ciudad_base: document.getElementById("o-ciudad").value,
+      tipo: document.getElementById("o-tipo").value
+    }), "out-organizaciones");
+
+    postForm("form-tecnologia", "/tecnologias", () => ({
+      nombre: document.getElementById("t-nombre").value,
+      tipo: document.getElementById("t-tipo").value,
+      descripcion: document.getElementById("t-desc").value
+    }), "out-tecnologias");
+
+    postForm("form-afiliacion", "/afiliaciones", () => ({
+      personaje: { id_personaje: parseInt(document.getElementById("a-id-personaje").value) },
+      organizacion: { id_organizacion: parseInt(document.getElementById("a-id-org").value) },
+      rol: document.getElementById("a-rol").value,
+      fecha_ingreso: document.getElementById("a-fecha").value
+    }), "out-afiliaciones");
+
+    postForm("form-relacion", "/relaciones", () => ({
+      personajeA: { id_personaje: parseInt(document.getElementById("r-id-a").value) },
+      personajeB: { id_personaje: parseInt(document.getElementById("r-id-b").value) },
+      tipo_relacion: document.getElementById("r-tipo").value
+    }), "out-relaciones");
+
+    postForm("form-uso", "/usos-tecnologia", () => ({
+      personaje: { id_personaje: parseInt(document.getElementById("u-id-personaje").value) },
+      tecnologia: { id_tecnologia: parseInt(document.getElementById("u-id-tec").value) }
+    }), "out-usos");
+
+    window.onload = () => {
+      mostrarRespuesta("out-personajes", "/personajes");
+      mostrarRespuesta("out-organizaciones", "/organizaciones");
+      mostrarRespuesta("out-tecnologias", "/tecnologias");
+      mostrarRespuesta("out-afiliaciones", "/afiliaciones");
+      mostrarRespuesta("out-relaciones", "/relaciones");
+      mostrarRespuesta("out-usos", "/usos-tecnologia");
+    };
+
+  const formatearObjeto = (obj) => {
+  if (typeof obj !== "object" || obj === null) {
+    return obj;
+  }
+  return Object.entries(obj)
+    .map(([key, val]) => {
+      if (typeof val === "object" && val !== null) {
+        return `${key}:\n  ${formatearObjeto(val).replace(/\n/g, '\n  ')}`;
+      }
+      return `${key}: ${val}`;
+    })
+    .join('\n');
+};
+
+</script>
+</body>
+</html>
